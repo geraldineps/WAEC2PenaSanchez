@@ -16,4 +16,9 @@ public class CursoService implements ICursoService{
     public List<Curso> listarCursos() {
         return cursoRepository.findAll();
     }
+
+    @Override
+    public void registrarCurso(Curso curso) {
+        cursoRepository.save(curso);
+    }
 }

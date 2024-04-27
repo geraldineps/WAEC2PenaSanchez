@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ICursoService {
     List<Curso> listarCursos();
+
+    void registrarCurso(Curso curso);
 }
