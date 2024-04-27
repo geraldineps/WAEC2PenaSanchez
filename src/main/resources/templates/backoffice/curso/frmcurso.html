@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Cursos</title>
+
+</head>
+<body>
+
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header text-bg-danger">
+        Mantenimiento de cursos:
+    </div>
+    <div class="card-body">
+        <button id="btnagregar" type="button" class="btn btn-primary">Agregar</button>
+        <hr />
+        <div id="divmensaje"></div>
+        <table id="tblcurso" class="table">
+            <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Resumen</th>
+                <th scope="col">Fecha de Registro</th>
+                <th scope="col">Docente</th>
+                <th scope="col">Actualizar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="curso : ${listcurso}">
+                <td th:text="${curso.idcurso}"></td>
+                <td th:text="${curso.nomcurso}"></td>
+                <td th:text="${curso.resumen}"></td>
+                <td th:text="${curso.fecharegistro}"></td>
+                <td th:text="${curso.docente.nomdocente}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary btnactualizar"
+                            th:data-cursocod="${curso.idcurso}"
+                            th:data-cursoname="${curso.nomcurso}"
+                            th:data-cursoresumem="${curso.resumen}"
+                            th:data-cursoreg="${curso.fecharegistro}"
+                            th:data-cursodoc="${curso.docente.iddocente}">Actualizar</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
