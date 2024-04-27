@@ -3,6 +3,7 @@ package com.edu.cibertec.WAEC2PenaSanchez.service;
 
 import com.edu.cibertec.WAEC2PenaSanchez.model.bd.Rol;
 import com.edu.cibertec.WAEC2PenaSanchez.model.bd.Usuario;
+import com.edu.cibertec.WAEC2PenaSanchez.model.dto.security.UsuarioSecurity;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -38,16 +39,16 @@ public class DetalleUsuarioService implements UserDetailsService {
     private UserDetails autenticacionUsuario(
             Usuario usuario, List<GrantedAuthority> authorityList
     ){
-        //UsuarioSecurity usuarioSecurity = new UsuarioSecurity(
-        return new User(
+        UsuarioSecurity usuarioSecurity = new UsuarioSecurity(
+
                 usuario.getNomusuario(),
                 usuario.getPassword(), usuario.getActivo(),
                 true, true,
                 true, authorityList
         );
-        //usuarioSecurity.setEmail(usuario.getEmail());
-        //usuarioSecurity.setNombre(usuario.getNombres());
-        //return usuarioSecurity;
+        usuarioSecurity.setEmail(usuario.getEmail());
+        usuarioSecurity.setNombre(usuario.getNombres());
+        return usuarioSecurity;
     }
 
 
