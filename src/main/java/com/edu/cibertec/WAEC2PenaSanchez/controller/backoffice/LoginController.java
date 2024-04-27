@@ -1,9 +1,11 @@
 package com.edu.cibertec.WAEC2PenaSanchez.controller.backoffice;
 
+import com.edu.cibertec.WAEC2PenaSanchez.model.dto.security.UsuarioSecurity;
 import com.edu.cibertec.WAEC2PenaSanchez.service.IUsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,21 +17,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     private IUsuarioService iUsuarioService;
+
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "backoffice/auth/frmlogin";
     }
+
     @GetMapping("/login-success")
-    public String loginSuccess(){
+    public String loginSuccess() {
         return "redirect:/auth/dashboard";
     }
+
     @GetMapping("/dashboard")
-    public String dashboard(HttpServletRequest request){
-//        HttpSession session = request.getSession();
-//        UserDetails userDetails = (UserDetails) SecurityContextHolder
-//                .getContext().getAuthentication().getPrincipal();
-//        UsuarioSecurity usuarioSecurity = (UsuarioSecurity) userDetails;
-//        session.setAttribute("nomusuario", usuarioSecurity.getNombre());
+    public String dashboard(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        UserDetails userDetails = (UserDetails) SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal();
+        UsuarioSecurity usuarioSecurity = (UsuarioSecurity) userDetails;
+        session.setAttribute("nomusuario", usuarioSecurity.getNombre());
         return "backoffice/auth/home";
     }
 

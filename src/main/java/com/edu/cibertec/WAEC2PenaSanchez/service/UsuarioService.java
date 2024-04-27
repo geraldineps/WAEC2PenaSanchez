@@ -28,8 +28,10 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public Usuario guardarUsuario(Usuario usuario) {
-        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+        usuario.setPassword(bCryptPasswordEncoder.encode(
+                "123456"));
         usuario.setActivo(true);
+        //Buscar el rol que le compete al usuario
         Rol usuarioRol = rolRepository.findByNomrol("ADMIN");
         usuario.setRoles(new HashSet<>(Arrays.asList(usuarioRol)));
         return usuarioRepository.save(usuario);
@@ -47,7 +49,13 @@ public class UsuarioService implements IUsuarioService{
         return usuario;
     }
 
-
+    @Override
+    public void actualizarUsuario(Usuario usuario) {
+        usuarioRepository.actualizarUsuario(
+                usuario.getNombres(), usuario.getApellidos(),
+                usuario.getActivo(), usuario.getIdusuario()
+        );
+    }
 
 
 }
