@@ -20,10 +20,10 @@ public class Usuario {
     private String nombres;
     private String apellidos;
     private Boolean activo;
-//    @ManyToMany(cascade = CascadeType.MERGE,
-//            fetch = FetchType.EAGER)
-//    @JoinTable(name = "usuario_rol",
-//            joinColumns = @JoinColumn(name = "idusuario"),
-//            inverseJoinColumns = @JoinColumn(name = "idrol"))
-//    private Set<Rol> roles;
+   @ManyToMany(cascade = CascadeType.MERGE,
+           fetch = FetchType.EAGER)
+   @JoinTable(name = "usuario_rol",
+          joinColumns = @JoinColumn(name = "idusuario"),
+           inverseJoinColumns = @JoinColumn(name = "idrol"))
+   private Set<Rol> roles;
 }
