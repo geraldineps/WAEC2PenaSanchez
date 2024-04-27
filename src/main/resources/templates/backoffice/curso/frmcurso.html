@@ -6,7 +6,7 @@
 
 </head>
 <body>
-
+<script th:src="@{/js/web/backoffice/curso/formcurso.js}" type="text/javascript"></script>
 <nav th:replace="layout::menu"></nav>
 <div class="card">
     <div class="card-header text-bg-danger">
@@ -47,3 +47,47 @@
         </table>
     </div>
 </div>
+
+<!-- Modal registro y actualización de curso -->
+<div class="modal fade" id="modalcurso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Curso</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtnombrecurso"
+                           placeholder="name@example.com">
+                    <label for="txtnombrecurso">Ingrese nombre del Curso</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtresumencurso"
+                           placeholder="name@example.com">
+                    <label for="txtresumencurso">Ingrese resumen del curso</label>
+                </div>
+                <div class="mb-3">
+                    <label for="cbodocente" class="form-label">Seleccione docente</label>
+                    <select id="cbodocente" class="form-select" ></select>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="fecharegistro"
+                           placeholder="name@example.com">
+                    <label for="fecharegistro">Fecha de registro</label>
+                </div>
+
+                <input type="hidden" id="hddidcurso" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
